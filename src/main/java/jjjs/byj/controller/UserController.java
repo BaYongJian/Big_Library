@@ -30,10 +30,10 @@ public class UserController {
     public String sign(User user){
         User user1 = userService.findByName(user.getUserName());
         if(user1 != null){
-            return "Error/SignError";
+            return "Error/User/SignError";
         }else{
             if(user.getPassword().length() < 6 || user.getPassword().length() > 20){
-                return "Error/PasswordLengthError";
+                return "Error/User/PasswordLengthError";
             }
             user.setPermission(0);
             userService.sign(user);
@@ -56,7 +56,7 @@ public class UserController {
                 return "Function/UserFunction";
             }
         }
-        return "Error/UserNameOrPasswordError";
+        return "Error/User/UserNameOrPasswordError";
     }
 
     /**
@@ -81,7 +81,7 @@ public class UserController {
     public String findByName(String userName,Model model){
         User user = userService.findByName(userName);
         if(user == null){
-            return "Error/NullUserError";
+            return "Error/User/NullUserError";
         }
         List<User> users = new LinkedList<>();
         users.add(user);
@@ -98,10 +98,10 @@ public class UserController {
     public String addUser(User user){
         User user1 = userService.findByName(user.getUserName());
         if(user1 != null){
-            return "Error/SignError";
+            return "Error/User/SignError";
         }else {
             if (user.getPassword().length() < 6 || user.getPassword().length() > 20) {
-                return "Error/PasswordLengthError";
+                return "Error/User/PasswordLengthError";
             }
             userService.sign(user);
             return "Success/SignSuccess";
@@ -117,9 +117,9 @@ public class UserController {
     public String deleteUser(User user){
         User user1 = userService.findByName(user.getUserName());
         if(user1 == null){
-            return "Error/NullUserError";
+            return "Error/User/NullUserError";
         }else if(!user.getPassword().equals(user1.getPassword())){
-            return "Error/PasswordError";
+            return "Error/User/PasswordError";
         }
         userService.deleteUser(user.getUserName());
         return "Success/DeleteSuccess";

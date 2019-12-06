@@ -31,6 +31,7 @@ public interface IUserDao {
      * 注册账户
      * @param user
      */
+    @ResultMap("userMap")
     @Insert("Insert into user (user_name,password,permission)values(#{userName},#{password},#{permission})")
     void sign(User user);
 
@@ -38,6 +39,7 @@ public interface IUserDao {
      * 查询所有普通账户
      * @return
      */
+    @ResultMap("userMap")
     @Select("Select * from user where permission = 0")
     List<User> findAll();
 
@@ -45,6 +47,7 @@ public interface IUserDao {
      * 删除账号
      * @param userName
      */
+    @ResultMap("userMap")
     @Delete("Delete from user where user_name = #{userName}")
     void deleteUser(String userName);
 }

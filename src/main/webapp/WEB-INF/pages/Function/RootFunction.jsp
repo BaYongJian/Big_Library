@@ -28,62 +28,60 @@
 
 </head>
 <div class="col-xs-6 col-md-4 col-center-block">
-    <center>
-        <form class="form-horizontal" method="post">
-            <table class="table">
-                <tr>
-                    <td align="center">
-                        <div class="form-group">
-                            <strong>
-                                <h1>书籍管理</h1>
-                            </strong>
-                        </div>
-                    </td>
-                    <td align="center">
-                        <div class="form-group">
-                            <strong>
-                                <h1>账户管理</h1>
-                            </strong>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <div class="form-group">
-                            <a class="btn btn-info btn-lg active" href="#">查询书籍</a>
-                        </div>
-                        <div class="form-group">
-                            <a class="btn btn-info btn-lg active" href="#">书名查询</a>
-                        </div>
-                        <div class="form-group">
-                            <a class="btn btn-warning btn-lg active" href="#">超时未还</a>
-                        </div>
-                        <div class="form-group">
-                            <a class="btn btn-danger btn-lg active" href="#">添加书籍</a>
-                        </div>
-                        <div class="form-group">
-                            <a class="btn btn-danger btn-lg active" href="#">删除书籍</a>
-                        </div>
-                    </td>
+    <form class="form-horizontal" method="post">
+        <table class="table">
+            <tr>
+                <td align="center">
+                    <div class="form-group">
+                        <strong>
+                            <h1>书籍管理</h1>
+                        </strong>
+                    </div>
+                </td>
+                <td align="center">
+                    <div class="form-group">
+                        <strong>
+                            <h1>账户管理</h1>
+                        </strong>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <div class="form-group">
+                        <a class="btn btn-info btn-lg active" href="/book/findAll">查询书籍</a>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-info btn-lg active" href="/static/Book/selectBookByName.jsp">书名查询</a>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-warning btn-lg active" href="#">超时未还</a>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-danger btn-lg active" href="/static/Book/addBook.jsp">添加书籍</a>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-danger btn-lg active" href="/static/Book/deleteBook.jsp">删除书籍</a>
+                    </div>
+                </td>
 
-                    <td align="center">
-                        <div class="form-group">
-                            <a class="btn btn-warning btn-lg active" href="/user/findAll">查询账户</a>
-                        </div>
-                        <div class="form-group">
-                            <a class="btn btn-warning btn-lg active" href="#">超时未还</a>
-                        </div>
-                        <div class="form-group">
-                            <a class="btn btn-danger btn-lg active" href="/static/User/addUser.jsp">增加账户</a>
-                        </div>
-                        <div class="form-group">
-                            <a class="btn btn-danger btn-lg active" href="/static/User/deleteUser.jsp">删除账户</a>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </center>
+                <td align="center">
+                    <div class="form-group">
+                        <a class="btn btn-warning btn-lg active" href="/user/findAll">查询账户</a>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-warning btn-lg active" href="#">超时未还</a>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-danger btn-lg active" href="/static/User/addUser.jsp">增加账户</a>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-danger btn-lg active" href="/static/User/deleteUser.jsp">删除账户</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
 </body>
 </html>

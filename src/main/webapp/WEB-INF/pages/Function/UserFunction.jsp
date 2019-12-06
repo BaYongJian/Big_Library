@@ -28,27 +28,25 @@
 
 </head>
 <div class="col-xs-6 col-md-4 col-center-block">
-    <center>
-        <form class="form-horizontal" method="post">
-            <div class="form-group">
-                <strong>
-                    <h1>操作列表</h1>
-                </strong>
-            </div>
-            <div class="form-group">
-                <a class="btn btn-info btn-lg active" href="#">查询书籍</a>
-            </div>
-            <div class="form-group">
-                <a class="btn btn-info btn-lg active" href="#">书名查询</a>
-            </div>
-            <div class="form-group">
-                <a class="btn btn-warning btn-lg active" href="#">借阅书籍</a>
-            </div>
-            <div class="form-group">
-                <a class="btn btn-warning btn-lg active" href="#">归还书籍</a>
-            </div>
-        </form>
-    </center>
+    <form class="form-horizontal" method="post">
+        <div class="form-group">
+            <strong>
+                <h1>操作列表</h1>
+            </strong>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-info btn-lg active" href="#">查询书籍</a>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-info btn-lg active" href="#">书名查询</a>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-warning btn-lg active" href="#">借阅书籍</a>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-warning btn-lg active" href="#">归还书籍</a>
+        </div>
+    </form>
 </div>
 </body>
 </html>

@@ -1,18 +1,18 @@
 <%--
   Created by IntelliJ IDEA.
   User: 巴
-  Date: 12.04
-  Time: 12:13
+  Date: 12.06
+  Time: 10:36
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>success</title>
+    <title>Success</title>
 </head>
 <body>
 
-    <h3>管理员账号登录成功！！！</h3>
+    <h3>添加成功！！！</h3>
 
 </body>
 </html>
