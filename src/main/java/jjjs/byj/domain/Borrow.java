@@ -13,6 +13,7 @@ public class Borrow implements Serializable {
     private String borrowBookName;
     private Date borrowBookTime;
     private Date returnBookTime;
+    private int whetherBookout;
 
     public String getBorrowUserName() {
         return borrowUserName;
@@ -46,6 +47,14 @@ public class Borrow implements Serializable {
         this.returnBookTime = returnBookTime;
     }
 
+    public int getWhetherBookout() {
+        return whetherBookout;
+    }
+
+    public void setWhetherBookout(int whetherBookout) {
+        this.whetherBookout = whetherBookout;
+    }
+
     @Override
     public String toString() {
         return "Borrow{" +
@@ -53,6 +62,7 @@ public class Borrow implements Serializable {
                 ", borrowBookName='" + borrowBookName + '\'' +
                 ", borrowBookTime=" + borrowBookTime +
                 ", returnBookTime=" + returnBookTime +
+                ", whetherBookout=" + whetherBookout +
                 '}';
     }
 }

@@ -12,6 +12,7 @@ public class Book implements Serializable {
     private String bookWriter;
     private Integer bookTotal;
     private Integer bookRemaining;
+    private Integer bookTimeout;
 
     public String getBookName() {
         return bookName;
@@ -43,6 +44,14 @@ public class Book implements Serializable {
 
     public void setBookRemaining(Integer bookRemaining) {
         this.bookRemaining = bookRemaining;
+    }
+
+    public Integer getBookTimeout() {
+        return bookTimeout;
+    }
+
+    public void setBookTimeout(Integer bookTimeout) {
+        this.bookTimeout = bookTimeout;
     }
 
     @Override

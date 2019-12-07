@@ -1,5 +1,6 @@
 package jjjs.byj.controller;
 
+import jjjs.byj.dao.IUserDao;
 import jjjs.byj.domain.Borrow;
 import jjjs.byj.services.IBorrowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -33,6 +35,12 @@ public class BorrowController {
         if(borrowUsers.isEmpty()){
             return "Error/Borrow/BookNotBorrowed";
         }
+        for(Borrow borrow:borrowUsers){
+            Date date = new Date();
+            if(date.getTime() - borrow.getBorrowBookTime().getTime() > 15 * 24 * 3600 * 1000){
+                borrow.setWhetherBookout(1);
+            }
+        }
         model.addAttribute("borrows",borrowUsers);
         return "Borrow/SelectBorrowUser";
     }
@@ -49,7 +57,37 @@ public class BorrowController {
         if(borrowBooks.isEmpty()){
             return "Error/Borrow/NoBookBorrowedError";
         }
+        for(Borrow borrow:borrowBooks){
+            Date date = new Date();
+            if(date.getTime() - borrow.getBorrowBookTime().getTime() > 15 * 24 * 3600 * 1000){
+                borrow.setWhetherBookout(1);
+            }
+        }
         model.addAttribute("borrows",borrowBooks);
         return "Borrow/SelectBorrowBook";
+    }
+
+    /**
+     * 根据书名查询超时未归还账号
+     * @param borrowBookName
+     * @param model
+     * @return
+     */
+    @RequestMapping("/findBorrowBookTimeoutUserByBookName")
+    public String findBorrowBookTimeoutUserByBookName(String borrowBookName,Model model){
+        List<Borrow> borrowUsers = borrowService.findByBookName(borrowBookName);
+        if(borrowUsers.isEmpty()){
+            return "Error/Borrow/BookNotBorrowed";
+        }
+        List<Borrow> borrows = new LinkedList<>();
+        for(Borrow borrow:borrowUsers){
+            Date date = new Date();
+            if(date.getTime() - borrow.getBorrowBookTime().getTime() > 15 * 24 * 3600 * 1000){
+                borrow.setWhetherBookout(1);
+                borrows.add(borrow);
+            }
+        }
+        model.addAttribute("borrows",borrows);
+        return "Borrow/SelectBorrowTimeoutUser";
     }
 }

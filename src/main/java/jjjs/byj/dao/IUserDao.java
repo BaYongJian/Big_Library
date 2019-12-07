@@ -50,4 +50,5 @@ public interface IUserDao {
     @ResultMap("userMap")
     @Delete("Delete from user where user_name = #{userName}")
     void deleteUser(String userName);
+
 }

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: 巴
-  Date: 12.06
-  Time: 15:35
+  Date: 12.07
+  Time: 14:41
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
@@ -25,7 +25,7 @@
         <tr>
             <td align="center" colspan="4">
                 <h1>
-                    书籍《${borrows.get(0).borrowBookName}》借阅表
+                    书籍《${borrows.get(0).borrowBookName}》借阅超时表
                 </h1>
             </td>
         </tr>
@@ -33,21 +33,12 @@
             <td align="center">账户名称</td>
             <td align="center">借阅时间</td>
             <td align="center">应归还时间</td>
-            <td align="center">是否超时</td>
         </tr>
         <c:forEach items="${borrows}" var="borrow">
             <tr>
                 <td align="center">${borrow.borrowUserName}</td>
                 <td align="center">${borrow.borrowBookTime}</td>
                 <td align="center">${borrow.returnBookTime}</td>
-                <td align="center">
-                    <c:if test="${borrow.whetherBookout == 1}" var="flag" scope="session">
-                        <font color="red">已超时</font>
-                    </c:if>
-                    <c:if test="${not flag}">
-                        未超时
-                    </c:if>
-                </td>
             </tr>
         </c:forEach>
     </form>

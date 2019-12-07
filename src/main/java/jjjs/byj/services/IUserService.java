@@ -34,4 +34,5 @@ public interface IUserService {
      * @param userName
      */
     void deleteUser(String userName);
+
 }

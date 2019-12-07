@@ -1,10 +1,7 @@
 package jjjs.byj.dao;
 
 import jjjs.byj.domain.Borrow;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,6 +24,7 @@ public interface IBorrowDao {
             @Result(column="borrow_book_name",property="borrowBookName"),
             @Result(column="borrow_book_time",property="borrowBookTime"),
             @Result(column="return_book_time",property="returnBookTime"),
+            @Result(column="whether_timeout",property="whetherTimeout"),
     })
     List<Borrow> findByBookName(String borrowBookName);
 
@@ -38,4 +36,14 @@ public interface IBorrowDao {
     @ResultMap("borrowMap")
     @Select("Select * from borrow where borrow_user_name = #{borrowUserName}")
     List<Borrow> findByUserName(String borrowUserName);
+
+    /**
+     * 根据账户和书名查询一列
+     * @param borrowUserName
+     * @param borrowBookName
+     * @return
+     */
+    @ResultMap("borrowMap")
+    @Select("Select * from borrow where borrow_book_name = #{borrowBookName} and borrow_user_name = #{borrowUserName}")
+    List<Borrow> findByUserNameAndBookName(String borrowUserName,String borrowBookName);
 }

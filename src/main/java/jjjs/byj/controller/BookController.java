@@ -1,12 +1,15 @@
 package jjjs.byj.controller;
 
 import jjjs.byj.domain.Book;
+import jjjs.byj.domain.Borrow;
 import jjjs.byj.services.IBookService;
+import jjjs.byj.services.IBorrowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,6 +24,9 @@ public class BookController {
     @Autowired
     private IBookService bookService;
 
+    @Autowired
+    private IBorrowService borrowService;
+
     /**
      * 查询所有书籍
      * @param model
@@ -31,6 +37,15 @@ public class BookController {
         List<Book> books = bookService.findAll();
         if(books == null){
             return "Error/Book/NullBookError";
+        }
+        for(Book book : books) {
+            List<Borrow> borrows = borrowService.findByBookName(book.getBookName());
+            for (Borrow borrow : borrows) {
+                Date date = new Date();
+                if (date.getTime() - borrow.getBorrowBookTime().getTime() > 15 * 24 * 3600 * 1000) {
+                    book.setBookTimeout(1);
+                }
+            }
         }
         model.addAttribute("books",books);
         return "Book/SelectBook";
@@ -50,6 +65,13 @@ public class BookController {
         }
         List<Book> books = new LinkedList<>();
         books.add(book);
+        List<Borrow> borrows = borrowService.findByBookName(book.getBookName());
+        for (Borrow borrow : borrows) {
+            Date date = new Date();
+            if (date.getTime() - borrow.getBorrowBookTime().getTime() > 15 * 24 * 3600 * 1000) {
+                book.setBookTimeout(1);
+            }
+        }
         model.addAttribute("books",books);
         return "Book/SelectBook";
     }

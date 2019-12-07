@@ -32,11 +32,22 @@
         <tr>
             <td align="center">书籍名称</td>
             <td align="center">借阅时间</td>
+            <td align="center">应归还时间</td>
+            <td align="center">是否超时</td>
         </tr>
         <c:forEach items="${borrows}" var="borrow">
             <tr>
                 <td align="center">${borrow.borrowBookName}</td>
                 <td align="center">${borrow.borrowBookTime}</td>
+                <td align="center">${borrow.returnBookTime}</td>
+                <td align="center">
+                    <c:if test="${borrow.whetherBookout == 1}" var="flag" scope="session">
+                        <font color="red">已超时</font>
+                    </c:if>
+                    <c:if test="${not flag}">
+                        未超时
+                    </c:if>
+                </td>
             </tr>
         </c:forEach>
     </form>

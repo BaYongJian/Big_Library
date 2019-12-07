@@ -33,7 +33,7 @@
             </div>
         </tr>
         <tr>
-            <td align="center" colspan="4">
+            <td align="center" colspan="6">
                 <h1>
                     图书馆藏书表
                 </h1>
@@ -62,8 +62,8 @@
                     </c:if>
                 </td>
                 <td align="center">
-                    <c:if test="${book.bookRemaining < book.bookTotal}" var="flag" scope="session">
-                        <a href="#">点击查看</a>
+                    <c:if test="${book.bookTimeout == 1}" var="flag" scope="session">
+                        <a href="/borrow/findBorrowBookTimeoutUserByBookName?borrowBookName=${book.bookName}">点击查看</a>
                     </c:if>
                     <c:if test="${not flag}">
                         无人超时
