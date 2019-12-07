@@ -2,6 +2,7 @@ package jjjs.byj.dao;
 
 import jjjs.byj.domain.Borrow;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -21,11 +22,20 @@ public interface IBorrowDao {
      * @return
      */
     @Select("Select * from borrow where borrow_book_name = #{borrowBookName}")
-    @Results(id="userMap",value = {
+    @Results(id="borrowMap",value = {
             @Result(column="borrow_user_name",property="borrowUserName"),
             @Result(column="borrow_book_name",property="borrowBookName"),
             @Result(column="borrow_book_time",property="borrowBookTime"),
             @Result(column="return_book_time",property="returnBookTime"),
     })
     List<Borrow> findByBookName(String borrowBookName);
+
+    /**
+     * 根据账户查询借阅的书籍
+     * @param borrowUserName
+     * @return
+     */
+    @ResultMap("borrowMap")
+    @Select("Select * from borrow where borrow_user_name = #{borrowUserName}")
+    List<Borrow> findByUserName(String borrowUserName);
 }

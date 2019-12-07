@@ -27,4 +27,14 @@ public class BorrowService implements IBorrowService {
     public List<Borrow> findByBookName(String borrowBookName) {
         return borrowDao.findByBookName(borrowBookName);
     }
+
+    /**
+     * 根据账户查询借阅的书籍
+     * @param borrowUserName
+     * @return
+     */
+    @Override
+    public List<Borrow> findByUserName(String borrowUserName) {
+        return borrowDao.findByUserName(borrowUserName);
+    }
 }

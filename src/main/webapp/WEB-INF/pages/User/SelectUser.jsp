@@ -42,7 +42,7 @@
         <tr>
             <td align="center">账号</td>
             <td align="center">密码</td>
-            <td align="center">是否借书未还</td>
+            <td align="center">是否借书未归还</td>
         </tr>
         <c:forEach items="${users}" var="user">
             <tr>
@@ -53,7 +53,7 @@
                         否，未借书未还
                     </c:if>
                     <c:if test="${not flag}">
-                        <a href="#?user_name=${user.userName}">是，点击以查看</a>
+                        <a href="/borrow/findByUserName?borrowUserName=${user.userName}">是，点击以查看</a>
                     </c:if>
                 </td>
             </tr>

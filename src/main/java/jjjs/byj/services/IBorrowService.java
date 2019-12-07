@@ -16,4 +16,11 @@ public interface IBorrowService {
      * @return
      */
     List<Borrow> findByBookName(String borrowBookName);
+
+    /**
+     * 根据账户查询借阅的书籍
+     * @param borrowUserName
+     * @return
+     */
+    List<Borrow> findByUserName(String borrowUserName);
 }

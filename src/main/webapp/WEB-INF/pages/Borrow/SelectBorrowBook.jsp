@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: 巴
-  Date: 12.06
-  Time: 15:35
+  Date: 12.07
+  Time: 10:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
@@ -25,17 +25,17 @@
         <tr>
             <td align="center" colspan="4">
                 <h1>
-                    书籍《${borrows.get(0).borrowBookName}》借阅表
+                    账户“${borrows.get(0).borrowUserName}”借阅表
                 </h1>
             </td>
         </tr>
         <tr>
-            <td align="center">账户名称</td>
+            <td align="center">书籍名称</td>
             <td align="center">借阅时间</td>
         </tr>
         <c:forEach items="${borrows}" var="borrow">
             <tr>
-                <td align="center">${borrow.borrowUserName}</td>
+                <td align="center">${borrow.borrowBookName}</td>
                 <td align="center">${borrow.borrowBookTime}</td>
             </tr>
         </c:forEach>
@@ -43,3 +43,4 @@
 </table>
 </body>
 </html>
+
