@@ -38,6 +38,7 @@
                         </strong>
                     </div>
                 </td>
+                <td></td>
                 <td align="center">
                     <div class="form-group">
                         <strong>
@@ -55,22 +56,23 @@
                         <a class="btn btn-info btn-lg active" href="/static/Book/selectBookByName.jsp">书名查询</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-warning btn-lg active" href="#">超时未还</a>
-                    </div>
-                    <div class="form-group">
                         <a class="btn btn-danger btn-lg active" href="/static/Book/addBook.jsp">添加书籍</a>
                     </div>
                     <div class="form-group">
                         <a class="btn btn-danger btn-lg active" href="/static/Book/deleteBook.jsp">删除书籍</a>
                     </div>
                 </td>
-
+                <td>
+                    <div class="form-group">
+                        <a class="btn btn-warning btn-lg active" href="/borrow/findAllBookTimeoutUser">超时未还</a>
+                    </div>
+                </td>
                 <td align="center">
                     <div class="form-group">
-                        <a class="btn btn-warning btn-lg active" href="/user/findAll">查询账户</a>
+                        <a class="btn btn-info btn-lg active" href="/user/findAll">查询账户</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-warning btn-lg active" href="#">超时未还</a>
+                        <a class="btn btn-info btn-lg active" href="/static/User/selectUserByName.jsp">名称查询</a>
                     </div>
                     <div class="form-group">
                         <a class="btn btn-danger btn-lg active" href="/static/User/addUser.jsp">增加账户</a>

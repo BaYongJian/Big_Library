@@ -49,6 +49,10 @@
         <tx:attributes>
             <tx:method name="findAll" read-only="true"/>
             <tx:method name="findByName" read-only="true"/>
+            <tx:method name="findBorrowBookTimeoutUserByBookName" read-only="true"/>
+            <tx:method name="findByBookName" read-only="true"/>
+            <tx:method name="findBYUserName" read-only="true"/>
+            <tx:method name="login" read-only="true"/>
         </tx:attributes>
     </tx:advice>
 
@@ -56,6 +60,7 @@
     <aop:config>
         <aop:advisor advice-ref="txAdvice" pointcut="execution(* jjjs.byj.services.impl.*Service.*(..))"/>
     </aop:config>
+
 
     <!--配置事务回滚-->
     <bean id="appTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

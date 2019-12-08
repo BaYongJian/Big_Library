@@ -83,11 +83,29 @@ public class BorrowController {
         for(Borrow borrow:borrowUsers){
             Date date = new Date();
             if(date.getTime() - borrow.getBorrowBookTime().getTime() > 15 * 24 * 3600 * 1000){
-                borrow.setWhetherBookout(1);
                 borrows.add(borrow);
             }
         }
         model.addAttribute("borrows",borrows);
         return "Borrow/SelectBorrowTimeoutUser";
+    }
+
+    /**
+     * 查询所有超时未还书账号
+     * @param model
+     * @return
+     */
+    @RequestMapping("/findAllBookTimeoutUser")
+    public String findAllBookTimeoutUser(Model model){
+        List<Borrow> borrows = borrowService.findAll();
+        List<Borrow> bookTimeoutUsers = new LinkedList<>();
+        for(Borrow borrow : borrows){
+            Date date = new Date();
+            if(date.getTime() - borrow.getBorrowBookTime().getTime() > 15 * 24 * 3600 * 1000){
+                bookTimeoutUsers.add(borrow);
+            }
+            model.addAttribute("borrows",bookTimeoutUsers);
+        }
+        return "Borrow/SelectAllBorrowTimeoutUser";
     }
 }

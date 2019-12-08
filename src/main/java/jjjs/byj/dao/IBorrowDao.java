@@ -38,12 +38,10 @@ public interface IBorrowDao {
     List<Borrow> findByUserName(String borrowUserName);
 
     /**
-     * 根据账户和书名查询一列
-     * @param borrowUserName
-     * @param borrowBookName
+     * 查询所有
      * @return
      */
     @ResultMap("borrowMap")
-    @Select("Select * from borrow where borrow_book_name = #{borrowBookName} and borrow_user_name = #{borrowUserName}")
-    List<Borrow> findByUserNameAndBookName(String borrowUserName,String borrowBookName);
+    @Select("Select * from borrow")
+    List<Borrow> findAll();
 }

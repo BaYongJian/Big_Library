@@ -25,10 +25,8 @@ public interface IBorrowService {
     List<Borrow> findByUserName(String borrowUserName);
 
     /**
-     * 根据账户和书名查询一列
-     * @param borrowUserName
-     * @param borrowBookName
+     * 查询所有
      * @return
      */
-    List<Borrow> findByUserNameAndBookName(String borrowUserName,String borrowBookName);
+    List<Borrow> findAll();
 }

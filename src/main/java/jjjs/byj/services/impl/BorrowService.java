@@ -38,8 +38,12 @@ public class BorrowService implements IBorrowService {
         return borrowDao.findByUserName(borrowUserName);
     }
 
+    /**
+     * 查询所有
+     * @return
+     */
     @Override
-    public List<Borrow> findByUserNameAndBookName(String borrowUserName, String borrowBookName) {
-        return borrowDao.findByUserNameAndBookName(borrowUserName,borrowBookName);
+    public List<Borrow> findAll() {
+        return borrowDao.findAll();
     }
 }

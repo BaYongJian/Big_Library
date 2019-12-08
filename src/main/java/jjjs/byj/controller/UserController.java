@@ -80,7 +80,7 @@ public class UserController {
     @RequestMapping("/findByName")
     public String findByName(String userName,Model model){
         User user = userService.findByName(userName);
-        if(user == null){
+        if(user == null || user.getPermission() == 1){
             return "Error/User/NullUserError";
         }
         List<User> users = new LinkedList<>();
