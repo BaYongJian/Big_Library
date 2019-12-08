@@ -29,6 +29,7 @@ public class BookController {
 
     /**
      * 查询所有书籍
+     * 管理员操作
      * @param model
      * @return
      */
@@ -48,11 +49,37 @@ public class BookController {
             }
         }
         model.addAttribute("books",books);
-        return "Book/SelectBook";
+        return "Book/Admin/SelectBook";
+    }
+
+    /**
+     * 查询所有书籍
+     * 普通用户操作
+     * @param userName
+     * @param model
+     * @return
+     */
+    @RequestMapping("generalFindAll")
+    public String generalFindAll(String userName,Model model){
+        List<Book> books = bookService.findAll();
+        if(books == null){
+            return "Error/Book/NullBookError";
+        }
+        List<Borrow> borrows = borrowService.findByUserName(userName);
+        for(Borrow borrow : borrows){
+            for(Book book : books){
+                if(book.getBookName().equals(borrow.getBorrowBookName())){
+                    book.setBorrowOrNot(true);
+                }
+            }
+        }
+        model.addAttribute("books",books);
+        return "Book/General/SelectBook";
     }
 
     /**
      * 根据名称查询书籍
+     * 管理员操作
      * @param bookName
      * @param model
      * @return
@@ -73,11 +100,31 @@ public class BookController {
             }
         }
         model.addAttribute("books",books);
-        return "Book/SelectBook";
+        return "Book/Admin/SelectBook";
+    }
+
+    /**
+     * 根据名称查询书籍
+     * 普通用户操作
+     * @param bookName
+     * @param model
+     * @return
+     */
+    @RequestMapping("generalFindByName")
+    public String generalFindByName(String bookName,Model model){
+        Book book = bookService.findByName(bookName);
+        if(book == null){
+            return "Error/Book/NullBookError";
+        }
+        List<Book> books = new LinkedList<>();
+        books.add(book);
+        model.addAttribute("books",books);
+        return "Book/General/SelectBook";
     }
 
     /**
      * 添加书籍
+     * 管理员操作
      * @param book
      * @return
      */
@@ -94,6 +141,7 @@ public class BookController {
 
     /**
      * 删除书籍
+     * 管理员操作
      * @param bookName
      * @return
      */
@@ -108,4 +156,5 @@ public class BookController {
         bookService.deleteBook(bookName);
         return "Success/DeleteSuccess";
     }
+
 }

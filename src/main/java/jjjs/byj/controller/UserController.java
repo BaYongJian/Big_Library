@@ -44,15 +44,17 @@ public class UserController {
     /**
      * 登录操作
      * @param user
+     * @param model
      * @return
      */
     @RequestMapping("/login")
-    public String login(User user){
+    public String login(User user,Model model){
         User user1 = userService.findByName(user.getUserName());
         if(user1 != null && (user.getPassword().equals(user1.getPassword()))){
             if(user1.getPermission() == 1){
                 return "Function/RootFunction";
             }else{
+                model.addAttribute("userName",user.getUserName());
                 return "Function/UserFunction";
             }
         }
@@ -61,6 +63,7 @@ public class UserController {
 
     /**
      * 查询所有普通账户
+     * 管理员操作
      * @param model
      * @return
      */
@@ -68,11 +71,12 @@ public class UserController {
     public String findAll(Model model){
         List<User> users = userService.findAll();
         model.addAttribute("users",users);
-        return "User/SelectUser";
+        return "User/Admin/SelectUser";
     }
 
     /**
      * 查询一个普通账户
+     * 管理员操作
      * @param userName
      * @param model
      * @return
@@ -86,11 +90,12 @@ public class UserController {
         List<User> users = new LinkedList<>();
         users.add(user);
         model.addAttribute("users",users);
-        return "User/SelectUser";
+        return "User/Admin/SelectUser";
     }
 
     /**
      * 增加账户操作
+     * 管理员操作
      * @param user
      * @return
      */
@@ -110,6 +115,7 @@ public class UserController {
 
     /**
      * 删除账户操作
+     * 管理员操作
      * @param user
      * @return
      */

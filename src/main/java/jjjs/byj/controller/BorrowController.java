@@ -1,6 +1,5 @@
 package jjjs.byj.controller;
 
-import jjjs.byj.dao.IUserDao;
 import jjjs.byj.domain.Borrow;
 import jjjs.byj.services.IBorrowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +24,7 @@ public class BorrowController {
 
     /**
      * 根据书名查询借阅该书籍的账户
+     * 管理员操作
      * @param borrowBookName
      * @param model
      * @return
@@ -42,11 +42,12 @@ public class BorrowController {
             }
         }
         model.addAttribute("borrows",borrowUsers);
-        return "Borrow/SelectBorrowUser";
+        return "Borrow/Admin/SelectBorrowUser";
     }
 
     /**
      * 根据账户查询借阅过的书籍
+     * 管理员操作
      * @param borrowUserName
      * @param model
      * @return
@@ -64,11 +65,12 @@ public class BorrowController {
             }
         }
         model.addAttribute("borrows",borrowBooks);
-        return "Borrow/SelectBorrowBook";
+        return "Borrow/Admin/SelectBorrowBook";
     }
 
     /**
      * 根据书名查询超时未归还账号
+     * 管理员操作
      * @param borrowBookName
      * @param model
      * @return
@@ -87,11 +89,12 @@ public class BorrowController {
             }
         }
         model.addAttribute("borrows",borrows);
-        return "Borrow/SelectBorrowTimeoutUser";
+        return "Borrow/Admin/SelectBorrowTimeoutUser";
     }
 
     /**
      * 查询所有超时未还书账号
+     * 管理员操作
      * @param model
      * @return
      */
@@ -106,6 +109,6 @@ public class BorrowController {
             }
             model.addAttribute("borrows",bookTimeoutUsers);
         }
-        return "Borrow/SelectAllBorrowTimeoutUser";
+        return "Borrow/Admin/SelectAllBorrowTimeoutUser";
     }
 }

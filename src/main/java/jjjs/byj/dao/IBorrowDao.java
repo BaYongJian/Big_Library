@@ -18,7 +18,7 @@ public interface IBorrowDao {
      * @param borrowBookName
      * @return
      */
-    @Select("Select * from borrow where borrow_book_name = #{borrowBookName}")
+    @Select("Select * from borrow where borrow_book_name = #{borrowBookName} order by borrow_user_name")
     @Results(id="borrowMap",value = {
             @Result(column="borrow_user_name",property="borrowUserName"),
             @Result(column="borrow_book_name",property="borrowBookName"),
@@ -34,7 +34,7 @@ public interface IBorrowDao {
      * @return
      */
     @ResultMap("borrowMap")
-    @Select("Select * from borrow where borrow_user_name = #{borrowUserName}")
+    @Select("Select * from borrow where borrow_user_name = #{borrowUserName} order by borrow_book_name ASC")
     List<Borrow> findByUserName(String borrowUserName);
 
     /**
@@ -42,6 +42,6 @@ public interface IBorrowDao {
      * @return
      */
     @ResultMap("borrowMap")
-    @Select("Select * from borrow")
+    @Select("Select * from borrow order by borrow_user_name")
     List<Borrow> findAll();
 }

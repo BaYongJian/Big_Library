@@ -53,13 +53,13 @@
                         <a class="btn btn-info btn-lg active" href="/book/findAll">查询书籍</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-info btn-lg active" href="/static/Book/selectBookByName.jsp">书名查询</a>
+                        <a class="btn btn-info btn-lg active" href="/static/Book/Admin/selectBookByName.jsp">书名查询</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-danger btn-lg active" href="/static/Book/addBook.jsp">添加书籍</a>
+                        <a class="btn btn-danger btn-lg active" href="/static/Book/Admin/addBook.jsp">添加书籍</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-danger btn-lg active" href="/static/Book/deleteBook.jsp">删除书籍</a>
+                        <a class="btn btn-danger btn-lg active" href="/static/Book/Admin/deleteBook.jsp">删除书籍</a>
                     </div>
                 </td>
                 <td>
@@ -72,13 +72,13 @@
                         <a class="btn btn-info btn-lg active" href="/user/findAll">查询账户</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-info btn-lg active" href="/static/User/selectUserByName.jsp">名称查询</a>
+                        <a class="btn btn-info btn-lg active" href="/static/User/Admin/selectUserByName.jsp">名称查询</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-danger btn-lg active" href="/static/User/addUser.jsp">增加账户</a>
+                        <a class="btn btn-danger btn-lg active" href="/static/User/Admin/addUser.jsp">增加账户</a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-danger btn-lg active" href="/static/User/deleteUser.jsp">删除账户</a>
+                        <a class="btn btn-danger btn-lg active" href="/static/User/Admin/deleteUser.jsp">删除账户</a>
                     </div>
                 </td>
             </tr>

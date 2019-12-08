@@ -5,7 +5,7 @@
   Time: 12:56
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>普通用户</title>
@@ -35,10 +35,11 @@
             </strong>
         </div>
         <div class="form-group">
-            <a class="btn btn-info btn-lg active" href="#">查询书籍</a>
+            <a class="btn btn-info btn-lg active" href="/book/generalFindAll?userName=${userName}">查询书籍</a>
         </div>
         <div class="form-group">
-            <a class="btn btn-info btn-lg active" href="#">书名查询</a>
+            <a class="btn btn-info btn-lg active"
+               href="/static/Book/General/selectBookByName.jsp">书名查询</a>
         </div>
         <div class="form-group">
             <a class="btn btn-warning btn-lg active" href="#">借阅书籍</a>

@@ -13,6 +13,7 @@ public class Book implements Serializable {
     private Integer bookTotal;
     private Integer bookRemaining;
     private Integer bookTimeout;
+    private boolean borrowOrNot = false;
 
     public String getBookName() {
         return bookName;
@@ -52,6 +53,14 @@ public class Book implements Serializable {
 
     public void setBookTimeout(Integer bookTimeout) {
         this.bookTimeout = bookTimeout;
+    }
+
+    public boolean isBorrowOrNot() {
+        return borrowOrNot;
+    }
+
+    public void setBorrowOrNot(boolean borrowOrNot) {
+        this.borrowOrNot = borrowOrNot;
     }
 
     @Override

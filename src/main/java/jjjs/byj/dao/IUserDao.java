@@ -40,7 +40,7 @@ public interface IUserDao {
      * @return
      */
     @ResultMap("userMap")
-    @Select("Select * from user where permission = 0")
+    @Select("Select * from user where permission = 0 order by user_name ASC")
     List<User> findAll();
 
     /**

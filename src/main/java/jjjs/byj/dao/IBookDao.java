@@ -17,7 +17,7 @@ public interface IBookDao {
      * 查询所有书籍
      * @return
      */
-    @Select("Select * from book")
+    @Select("Select * from book order by book_name ASC")
     @Results(id="bookMap",value = {
             @Result(column="book_name",property="bookName",id=true),
             @Result(column="book_writer",property="bookWriter"),
