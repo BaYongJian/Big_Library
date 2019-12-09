@@ -130,4 +130,13 @@ public class UserController {
         userService.deleteUser(user.getUserName());
         return "Success/DeleteSuccess";
     }
+
+    /**
+     * 借阅账号
+     * @param userName
+     * @return
+    @RequestMapping("borrowUser")
+    public void borrowUser(String userName){
+        userService.borrowUser(userName);
+    }*/
 }

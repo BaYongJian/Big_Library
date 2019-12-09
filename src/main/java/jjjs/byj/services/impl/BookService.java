@@ -46,4 +46,9 @@ public class BookService implements IBookService {
     public void deleteBook(String bookName) {
         bookDao.deleteBook(bookName);
     }
+
+    @Override
+    public void borrowBook(String bookName) {
+        bookDao.borrowBook(bookName);
+    }
 }

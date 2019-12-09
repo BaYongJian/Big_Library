@@ -34,4 +34,10 @@ public interface IBookService {
      * @param bookName
      */
     void deleteBook(String bookName);
+
+    /**
+     * 借阅书籍
+     * @param bookName
+     */
+    void borrowBook(String bookName);
 }

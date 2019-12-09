@@ -60,7 +60,7 @@ public class BookController {
      * @return
      */
     @RequestMapping("generalFindAll")
-    public String generalFindAll(String userName,Model model){
+    public String generalFindAll(String userName,Model model,Model model1){
         List<Book> books = bookService.findAll();
         if(books == null){
             return "Error/Book/NullBookError";
@@ -73,6 +73,7 @@ public class BookController {
                 }
             }
         }
+        model1.addAttribute("userName",userName);
         model.addAttribute("books",books);
         return "Book/General/SelectBook";
     }
@@ -157,4 +158,18 @@ public class BookController {
         return "Success/DeleteSuccess";
     }
 
+    /**
+     * 借阅书籍
+     * @param bookName
+     * @return
+
+    @RequestMapping("borrowBook")
+    public String borrowBook(String bookName){
+        Book book = bookService.findByName(bookName);
+        if(book.getBookRemaining() == 0){
+            return "Error/Book/BookRemainingNullError";
+        }
+        bookService.borrowBook(bookName);
+        return null;
+    }*/
 }

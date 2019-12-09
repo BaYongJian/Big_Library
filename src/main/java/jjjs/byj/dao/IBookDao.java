@@ -51,4 +51,12 @@ public interface IBookDao {
     @ResultMap("bookMap")
     @Delete("Delete from book where book_name = #{bookName}")
     void deleteBook(String bookName);
+
+    /**
+     * 借阅书籍
+     * @param bookName
+     */
+    @ResultMap("bookMap")
+    @Update("Update book set book_remaining = book_remaining - 1 where book_name = #{bookName}")
+    void borrowBook(String bookName);
 }

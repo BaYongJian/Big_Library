@@ -57,7 +57,7 @@
                         <a href="#" style="color: red">归还</a>
                     </c:if>
                     <c:if test="${not flag}">
-                        <a href="#">借阅</a>
+                        <a href="/borrow/borrowBookByUser?userName=${userName}&bookName=${book.bookName}">借阅</a>
                     </c:if>
                 </td>
             </tr>

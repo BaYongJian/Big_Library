@@ -1,7 +1,11 @@
 package jjjs.byj.controller;
 
+import jjjs.byj.domain.Book;
 import jjjs.byj.domain.Borrow;
+import jjjs.byj.services.IBookService;
 import jjjs.byj.services.IBorrowService;
+import jjjs.byj.services.IUserService;
+import jjjs.byj.services.impl.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +25,12 @@ public class BorrowController {
 
     @Autowired
     private IBorrowService borrowService;
+
+    @Autowired
+    private IBookService bookService;
+
+    @Autowired
+    private IUserService userService;
 
     /**
      * 根据书名查询借阅该书籍的账户
@@ -110,5 +120,38 @@ public class BorrowController {
             model.addAttribute("borrows",bookTimeoutUsers);
         }
         return "Borrow/Admin/SelectAllBorrowTimeoutUser";
+    }
+
+    /**
+     * 根据账户名称、书籍名称借阅
+     * @param userName
+     * @param bookName
+     * @param model
+     * @return
+     */
+    @RequestMapping("borrowBookByUser")
+    public String borrowBookByUser(String userName,String bookName,Model model){
+        try {
+            Borrow borrow = borrowService.findByBookNAmeAndUserNAme(bookName,userName);
+        }catch (Exception e){
+            Borrow borrow1 = new Borrow();
+            borrow1.setBorrowBookName(bookName);
+            borrow1.setBorrowUserName(userName);
+            Date date = new Date();
+            borrow1.setBorrowBookTime(new java.sql.Date(date.getTime()));
+            borrow1.setReturnBookTime(new java.sql.Date(date.getTime() + 15 * 24 * 3600 * 1000));
+
+            Book book = bookService.findByName(bookName);
+            if(book.getBookRemaining() == 0){
+                return "Error/Book/BookRemainingNullError";
+            }
+            bookService.borrowBook(bookName);
+
+            userService.borrowUser(userName);
+
+            borrowService.borrowBookByUser(borrow1);
+            return "Success/BorrowSuccess";
+        }
+        return "Error/Borrow/HadBorrowedError";
     }
 }

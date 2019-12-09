@@ -35,4 +35,9 @@ public interface IUserService {
      */
     void deleteUser(String userName);
 
+    /**
+     * 借阅书籍的账号
+     * @param userName
+     */
+    void borrowUser(String userName);
 }

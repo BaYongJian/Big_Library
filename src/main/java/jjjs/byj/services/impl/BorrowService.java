@@ -46,4 +46,14 @@ public class BorrowService implements IBorrowService {
     public List<Borrow> findAll() {
         return borrowDao.findAll();
     }
+
+    @Override
+    public void borrowBookByUser(Borrow borrow) {
+        borrowDao.borrowBookByUser(borrow);
+    }
+
+    @Override
+    public Borrow findByBookNAmeAndUserNAme(String bookName, String userName) {
+        return borrowDao.findByBookNAmeAndUserNAme(bookName,userName);
+    }
 }

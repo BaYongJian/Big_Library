@@ -44,4 +44,23 @@ public interface IBorrowDao {
     @ResultMap("borrowMap")
     @Select("Select * from borrow order by borrow_user_name")
     List<Borrow> findAll();
+
+    /**
+     * 普通账号借阅书籍
+     * @param borrow
+     */
+    @ResultMap("borrowMap")
+    @Insert("Insert into borrow (borrow_user_name,borrow_book_name,borrow_book_time,return_book_time) " +
+            "values (#{borrowUserName},#{borrowBookName},#{borrowBookTime},#{returnBookTime})")
+    void borrowBookByUser(Borrow borrow);
+
+    /**
+     * 根据书籍名称、账号名称查询一列
+     * @param bookName
+     * @param userName
+     * @return
+     */
+    @ResultMap("borrowMap")
+    @Select("Select * from borrow where borrow_book_name = #{bookName},borrow_user_name = #{userName}")
+    Borrow findByBookNAmeAndUserNAme(String bookName,String userName);
 }

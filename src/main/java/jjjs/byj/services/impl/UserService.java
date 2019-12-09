@@ -55,4 +55,8 @@ public class UserService implements IUserService {
         userDao.deleteUser(userName);
     }
 
+    @Override
+    public void borrowUser(String userName) {
+        userDao.borrowUser(userName);
+    }
 }

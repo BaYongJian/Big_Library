@@ -29,4 +29,18 @@ public interface IBorrowService {
      * @return
      */
     List<Borrow> findAll();
+
+    /**
+     * 普通账号借阅书籍
+     * @param borrow
+     */
+    void borrowBookByUser(Borrow borrow);
+
+    /**
+     * 根据书籍名称、账号名称查询一列
+     * @param bookName
+     * @param userName
+     * @return
+     */
+    Borrow findByBookNAmeAndUserNAme(String bookName,String userName);
 }

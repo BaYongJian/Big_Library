@@ -51,4 +51,11 @@ public interface IUserDao {
     @Delete("Delete from user where user_name = #{userName}")
     void deleteUser(String userName);
 
+    /**
+     * 借阅书籍的账号
+     * @param userName
+     */
+    @ResultMap("userMap")
+    @Update("Update user set borrow_book = borrow_book + 1 where user_name = #{userName}")
+    void borrowUser(String userName);
 }
