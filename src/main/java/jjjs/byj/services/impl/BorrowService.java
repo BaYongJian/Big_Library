@@ -47,13 +47,33 @@ public class BorrowService implements IBorrowService {
         return borrowDao.findAll();
     }
 
+    /**
+     * 普通账户借阅书籍
+     * @param borrow
+     */
     @Override
     public void borrowBookByUser(Borrow borrow) {
         borrowDao.borrowBookByUser(borrow);
     }
 
+    /**
+     * 根据书籍名称、账号名称查询一列
+     * @param bookName
+     * @param userName
+     * @return
+     */
     @Override
-    public Borrow findByBookNAmeAndUserNAme(String bookName, String userName) {
-        return borrowDao.findByBookNAmeAndUserNAme(bookName,userName);
+    public Borrow findByBookNameAndUserName(String bookName, String userName) {
+        return borrowDao.findByBookNameAndUserName(bookName,userName);
+    }
+
+    /**
+     * 根据书籍名称、账户名称归还书籍
+     * @param borrowUserName
+     * @param borrowBookName
+     */
+    @Override
+    public void returnBook(String borrowUserName, String borrowBookName) {
+        borrowDao.returnBook(borrowUserName,borrowBookName);
     }
 }

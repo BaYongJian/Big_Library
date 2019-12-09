@@ -37,18 +37,39 @@ public class BookService implements IBookService {
         return bookDao.findByName(bookName);
     }
 
+    /**
+     * 添加书籍
+     * @param book
+     */
     @Override
     public void addBook(Book book) {
         bookDao.addBook(book);
     }
 
+    /**
+     * 删除书籍
+     * @param bookName
+     */
     @Override
     public void deleteBook(String bookName) {
         bookDao.deleteBook(bookName);
     }
 
+    /**
+     * 借阅书籍
+     * @param bookName
+     */
     @Override
     public void borrowBook(String bookName) {
         bookDao.borrowBook(bookName);
+    }
+
+    /**
+     * 归还书籍
+     * @param bookName
+     */
+    @Override
+    public void returnBook(String bookName) {
+        bookDao.returnBook(bookName);
     }
 }

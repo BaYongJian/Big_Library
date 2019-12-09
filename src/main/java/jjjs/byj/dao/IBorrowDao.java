@@ -24,7 +24,6 @@ public interface IBorrowDao {
             @Result(column="borrow_book_name",property="borrowBookName"),
             @Result(column="borrow_book_time",property="borrowBookTime"),
             @Result(column="return_book_time",property="returnBookTime"),
-            @Result(column="whether_timeout",property="whetherTimeout"),
     })
     List<Borrow> findByBookName(String borrowBookName);
 
@@ -61,6 +60,15 @@ public interface IBorrowDao {
      * @return
      */
     @ResultMap("borrowMap")
-    @Select("Select * from borrow where borrow_book_name = #{bookName},borrow_user_name = #{userName}")
-    Borrow findByBookNAmeAndUserNAme(String bookName,String userName);
+    @Select("Select * from borrow where borrow_book_name = #{bookName} and borrow_user_name = #{userName}")
+    Borrow findByBookNameAndUserName(@Param("bookName")String bookName,@Param("userName")String userName);
+
+    /**
+     * 根据书籍名称、账户名称归还书籍
+     * @param userName
+     * @param bookName
+     */
+    @ResultMap("borrowMap")
+    @Delete("Delete from borrow where borrow_user_name = #{userName} and borrow_book_name = #{bookName}")
+    void returnBook(@Param("userName")String userName,@Param("bookName")String bookName);
 }

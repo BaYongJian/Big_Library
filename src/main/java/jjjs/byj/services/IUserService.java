@@ -40,4 +40,10 @@ public interface IUserService {
      * @param userName
      */
     void borrowUser(String userName);
+
+    /**
+     * 归还书籍
+     * @param userName
+     */
+    void returnBook(String userName);
 }

@@ -42,10 +42,10 @@
                href="/static/Book/General/selectBookByName.jsp">书名查询</a>
         </div>
         <div class="form-group">
-            <a class="btn btn-warning btn-lg active" href="#">借阅书籍</a>
+            <a class="btn btn-warning btn-lg active" href="/borrow/findNotBorrowedBook?userName=${userName}">借阅书籍</a>
         </div>
         <div class="form-group">
-            <a class="btn btn-warning btn-lg active" href="#">归还书籍</a>
+            <a class="btn btn-warning btn-lg active" href="/borrow/borrowedBook?userName=${userName}">归还书籍</a>
         </div>
     </form>
 </div>

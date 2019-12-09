@@ -59,4 +59,12 @@ public interface IBookDao {
     @ResultMap("bookMap")
     @Update("Update book set book_remaining = book_remaining - 1 where book_name = #{bookName}")
     void borrowBook(String bookName);
+
+    /**
+     * 归还书籍
+     * @param bookName
+     */
+    @ResultMap("bookMap")
+    @Update("Update book set book_remaining = book_remaining + 1 where book_name = #{bookName}")
+    void returnBook(String bookName);
 }

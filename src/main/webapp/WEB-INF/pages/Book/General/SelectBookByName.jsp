@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: 巴
-  Date: 12.08
-  Time: 12:59
+  Date: 12.09
+  Time: 16:17
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
@@ -33,7 +33,7 @@
             </div>
         </tr>
         <tr>
-            <td align="center" colspan="5">
+            <td align="center" colspan="4">
                 <h1>
                     图书馆藏书表
                 </h1>
@@ -44,24 +44,13 @@
             <td align="center">书籍作者</td>
             <td align="center">书籍总数</td>
             <td align="center">书籍剩余数</td>
-            <td align="center">操作</td>
         </tr>
-        <c:forEach items="${books}" var="book">
             <tr>
                 <td align="center">${book.bookName}</td>
                 <td align="center">${book.bookWriter}</td>
                 <td align="center">${book.bookTotal}</td>
                 <td align="center">${book.bookRemaining}</td>
-                <td align="center">
-                    <c:if test="${book.borrowOrNot}" var="flag" scope="session">
-                        <a href="/borrow/returnBook?userName=${userName}&bookName=${book.bookName}" style="color: red">归还</a>
-                    </c:if>
-                    <c:if test="${not flag}">
-                        <a href="/borrow/borrowBookByUser?userName=${userName}&bookName=${book.bookName}">借阅</a>
-                    </c:if>
-                </td>
             </tr>
-        </c:forEach>
     </form>
 </table>
 </body>

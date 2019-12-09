@@ -57,6 +57,7 @@ public class BookController {
      * 普通用户操作
      * @param userName
      * @param model
+     * @param model1
      * @return
      */
     @RequestMapping("generalFindAll")
@@ -117,10 +118,8 @@ public class BookController {
         if(book == null){
             return "Error/Book/NullBookError";
         }
-        List<Book> books = new LinkedList<>();
-        books.add(book);
-        model.addAttribute("books",books);
-        return "Book/General/SelectBook";
+        model.addAttribute("book",book);
+        return "Book/General/SelectBookByName";
     }
 
     /**
@@ -158,18 +157,4 @@ public class BookController {
         return "Success/DeleteSuccess";
     }
 
-    /**
-     * 借阅书籍
-     * @param bookName
-     * @return
-
-    @RequestMapping("borrowBook")
-    public String borrowBook(String bookName){
-        Book book = bookService.findByName(bookName);
-        if(book.getBookRemaining() == 0){
-            return "Error/Book/BookRemainingNullError";
-        }
-        bookService.borrowBook(bookName);
-        return null;
-    }*/
 }

@@ -58,4 +58,12 @@ public interface IUserDao {
     @ResultMap("userMap")
     @Update("Update user set borrow_book = borrow_book + 1 where user_name = #{userName}")
     void borrowUser(String userName);
+
+    /**
+     * 归还书籍
+     * @param userName
+     */
+    @ResultMap("userMap")
+    @Update("Update user set borrow_book = borrow_book - 1 where user_name = #{userName}")
+    void returnBook(String userName);
 }

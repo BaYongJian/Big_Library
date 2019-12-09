@@ -5,7 +5,6 @@ import jjjs.byj.domain.Borrow;
 import jjjs.byj.services.IBookService;
 import jjjs.byj.services.IBorrowService;
 import jjjs.byj.services.IUserService;
-import jjjs.byj.services.impl.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,7 +42,7 @@ public class BorrowController {
     public String findByBookName(String borrowBookName, Model model){
         List<Borrow> borrowUsers = borrowService.findByBookName(borrowBookName);
         if(borrowUsers.isEmpty()){
-            return "Error/Borrow/BookNotBorrowed";
+            return "Error/Borrow/BookNotBorrowedError";
         }
         for(Borrow borrow:borrowUsers){
             Date date = new Date();
@@ -89,7 +88,7 @@ public class BorrowController {
     public String findBorrowBookTimeoutUserByBookName(String borrowBookName,Model model){
         List<Borrow> borrowUsers = borrowService.findByBookName(borrowBookName);
         if(borrowUsers.isEmpty()){
-            return "Error/Borrow/BookNotBorrowed";
+            return "Error/Borrow/BookNotBorrowedError";
         }
         List<Borrow> borrows = new LinkedList<>();
         for(Borrow borrow:borrowUsers){
@@ -126,14 +125,14 @@ public class BorrowController {
      * 根据账户名称、书籍名称借阅
      * @param userName
      * @param bookName
-     * @param model
      * @return
      */
     @RequestMapping("borrowBookByUser")
-    public String borrowBookByUser(String userName,String bookName,Model model){
-        try {
-            Borrow borrow = borrowService.findByBookNAmeAndUserNAme(bookName,userName);
-        }catch (Exception e){
+    public String borrowBookByUser(String userName,String bookName){
+            Borrow borrow = borrowService.findByBookNameAndUserName(bookName,userName);
+            if(borrow != null){
+                return "Error/Borrow/HadBorrowedError";
+            }
             Borrow borrow1 = new Borrow();
             borrow1.setBorrowBookName(bookName);
             borrow1.setBorrowUserName(userName);
@@ -151,7 +150,61 @@ public class BorrowController {
 
             borrowService.borrowBookByUser(borrow1);
             return "Success/BorrowSuccess";
+    }
+
+    /**
+     * 查询未借阅的书籍
+     * 普通账户操作
+     * @param userName
+     * @param model
+     * @param model1
+     * @return
+     */
+    @RequestMapping("/findNotBorrowedBook")
+    public String findNotBorrowedBook(String userName,Model model,Model model1){
+        List<Book> books = bookService.findAll();
+        List<Borrow> borrows = borrowService.findByUserName(userName);
+        for(int i = 0;i < books.size();i++){
+            for(Borrow borrow : borrows){
+                if(books.get(i).getBookName().equals(borrow.getBorrowBookName())){
+                    books.remove(i);
+                }
+            }
         }
-        return "Error/Borrow/HadBorrowedError";
+        model1.addAttribute("userName",userName);
+        model.addAttribute("books",books);
+        return "Borrow/General/NotBorrowedBook";
+    }
+
+    /**
+     * 根据账户查询借阅的书籍
+     * @param userName
+     * @param model
+     * @param model1
+     * @return
+     */
+    @RequestMapping("borrowedBook")
+    public String borrowedBook(String userName,Model model,Model model1){
+        List<Borrow> borrows = borrowService.findByUserName(userName);
+        if(borrows.isEmpty()){
+            return "Error/Borrow/NeverBorrowedBookError";
+        }
+        model.addAttribute("borrows",borrows);
+        model1.addAttribute("userName",userName);
+        return "Borrow/General/ReturnBook";
+    }
+
+    /**
+     * 归还书籍
+     * @param userName
+     * @param bookName
+     * @return
+     */
+    @RequestMapping("returnBook")
+    public String returnBook(String userName,String bookName) {
+        borrowService.returnBook(userName,bookName);
+        bookService.returnBook(bookName);
+        userService.returnBook(userName);
+        return "Success/ReturnSuccess";
     }
 }

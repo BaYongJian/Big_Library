@@ -55,8 +55,21 @@ public class UserService implements IUserService {
         userDao.deleteUser(userName);
     }
 
+    /**
+     * 借阅书籍的账号
+     * @param userName
+     */
     @Override
     public void borrowUser(String userName) {
         userDao.borrowUser(userName);
+    }
+
+    /**
+     * 归还书籍
+     * @param userName
+     */
+    @Override
+    public void returnBook(String userName) {
+        userDao.returnBook(userName);
     }
 }

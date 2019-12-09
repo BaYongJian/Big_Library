@@ -40,4 +40,10 @@ public interface IBookService {
      * @param bookName
      */
     void borrowBook(String bookName);
+
+    /**
+     * 归还书籍
+     * @param bookName
+     */
+    void returnBook(String bookName);
 }

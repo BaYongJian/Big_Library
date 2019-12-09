@@ -42,5 +42,12 @@ public interface IBorrowService {
      * @param userName
      * @return
      */
-    Borrow findByBookNAmeAndUserNAme(String bookName,String userName);
+    Borrow findByBookNameAndUserName(String bookName,String userName);
+
+    /**
+     * 根据书籍名称、账户名称归还书籍
+     * @param bookName
+     * @param userName
+     */
+    void returnBook(String userName,String bookName);
 }

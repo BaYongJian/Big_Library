@@ -13,6 +13,8 @@ public class Borrow implements Serializable {
     private String borrowBookName;
     private Date borrowBookTime;
     private Date returnBookTime;
+
+    //超时标志位
     private int whetherBookout;
 
     public String getBorrowUserName() {
