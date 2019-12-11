@@ -49,9 +49,13 @@
         <tx:attributes>
             <tx:method name="findAll" read-only="true"/>
             <tx:method name="findByName" read-only="true"/>
+            <tx:method name="generalFindAll" read-only="true"/>
+            <tx:method name="generalFindByName" read-only="true"/>
+            <tx:method name="findAllBookByUser" read-only="true" />
             <tx:method name="findBorrowBookTimeoutUserByBookName" read-only="true"/>
             <tx:method name="findByBookName" read-only="true"/>
             <tx:method name="findBYUserName" read-only="true"/>
+            <tx:method name="findNotBorrowedBook" read-only="true"/>
             <tx:method name="login" read-only="true"/>
         </tx:attributes>
     </tx:advice>
