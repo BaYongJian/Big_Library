@@ -52,6 +52,7 @@ public class UserController {
         User user1 = userService.findByName(user.getUserName());
         if(user1 != null && (user.getPassword().equals(user1.getPassword()))){
             if(user1.getPermission() == 1){
+                model.addAttribute("userName",user.getUserName());
                 return "Function/RootFunction";
             }else{
                 model.addAttribute("userName",user.getUserName());
@@ -129,5 +130,28 @@ public class UserController {
         }
         userService.deleteUser(user.getUserName());
         return "Success/DeleteSuccess";
+    }
+
+    /**
+     * 修改密码
+     * @param userName
+     * @param oldPassword
+     * @param newPassword
+     * @return
+     */
+    @RequestMapping("/changePassword")
+    public String changePassword(String userName,String oldPassword,String newPassword){
+        User user1 = userService.findByName(userName);
+        if(user1 == null){
+            return "Error/User/NullUserError";
+        }else if(!oldPassword.equals(user1.getPassword())){
+            return "Error/User/PasswordError";
+        }else if(newPassword.equals(oldPassword)){
+            return "Error/User/SamePassword";
+        }else if(newPassword.length() < 6 || newPassword.length() > 20) {
+            return "Error/User/PasswordLengthError";
+        }
+        userService.changePassword(userName,newPassword);
+        return "Success/ChangeSuccess";
     }
 }

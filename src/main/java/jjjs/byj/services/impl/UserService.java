@@ -72,4 +72,16 @@ public class UserService implements IUserService {
     public void returnBook(String userName) {
         userDao.returnBook(userName);
     }
+
+    /**
+     * 修改密码
+     * @param userName
+     * @param password
+     */
+    @Override
+    public void changePassword(String userName, String password) {
+        userDao.changePassword(userName,password);
+    }
+
+
 }

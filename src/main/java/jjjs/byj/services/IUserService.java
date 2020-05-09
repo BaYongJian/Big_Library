@@ -46,4 +46,11 @@ public interface IUserService {
      * @param userName
      */
     void returnBook(String userName);
+
+    /**
+     * 修改密码
+     * @param userName
+     * @param password
+     */
+    void changePassword(String userName,String password);
 }

@@ -5,7 +5,7 @@
   Time: 12:56
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>管理员</title>
@@ -65,6 +65,9 @@
                 <td>
                     <div class="form-group">
                         <a class="btn btn-warning btn-lg active" href="/borrow/findAllBookTimeoutUser">超时未还</a>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-danger btn-lg active" href="/static/User/changePassword.jsp?userName=${userName}" role="button">修改密码</a>
                     </div>
                 </td>
                 <td align="center">

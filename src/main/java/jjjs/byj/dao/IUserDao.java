@@ -31,39 +31,48 @@ public interface IUserDao {
      * 注册账户
      * @param user
      */
-    @ResultMap("userMap")
     @Insert("Insert into user (user_name,password,permission)values(#{userName},#{password},#{permission})")
+    @ResultMap("userMap")
     void sign(User user);
 
     /**
      * 查询所有普通账户
      * @return
      */
-    @ResultMap("userMap")
     @Select("Select * from user where permission = 0 order by user_name ASC")
+    @ResultMap("userMap")
     List<User> findAll();
 
     /**
      * 删除账号
      * @param userName
      */
-    @ResultMap("userMap")
     @Delete("Delete from user where user_name = #{userName}")
+    @ResultMap("userMap")
     void deleteUser(String userName);
 
     /**
      * 借阅书籍的账号
      * @param userName
      */
-    @ResultMap("userMap")
     @Update("Update user set borrow_book = borrow_book + 1 where user_name = #{userName}")
+    @ResultMap("userMap")
     void borrowUser(String userName);
 
     /**
      * 归还书籍
      * @param userName
      */
-    @ResultMap("userMap")
     @Update("Update user set borrow_book = borrow_book - 1 where user_name = #{userName}")
+    @ResultMap("userMap")
     void returnBook(String userName);
+
+    /**
+     * 修改密码
+     * @param userName
+     * @param password
+     */
+    @Update("Update user set password = #{arg1} where user_name = #{arg0}")
+    @ResultMap("userMap")
+    void changePassword(String userName, String password);
 }

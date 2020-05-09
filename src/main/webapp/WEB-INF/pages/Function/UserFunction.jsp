@@ -15,7 +15,7 @@
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 
     <style>
         .col-center-block {
@@ -46,6 +46,9 @@
         </div>
         <div class="form-group">
             <a class="btn btn-warning btn-lg active" href="/borrow/borrowedBook?userName=${userName}">归还书籍</a>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-danger btn-lg active" href="/static/User/changePassword.jsp?userName=${userName}" role="button">修改密码</a>
         </div>
     </form>
 </div>
